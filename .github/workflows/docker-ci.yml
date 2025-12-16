@@ -1,34 +1,12 @@
-name: Docker Build CI
+name: My First Robot
 
-# Trigger: When do we want this to run?
-# We want it on every push to the 'main' branch.
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
 
-# Jobs: The actual work to be done.
 jobs:
-  build-and-test:
-    # The runner OS
+  hello:
     runs-on: ubuntu-latest
-
     steps:
-      # Step 1: Check out the code from the repo
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      # Step 2: Build the Docker image
-      # This ensures the Dockerfile is valid and the build succeeds
-      - name: Build Docker Image
-        run: docker build -t my-log-analyzer:${{ github.sha }} .
-
-      # Step 3: Run a quick test
-      # We run the container to see if it executes without crashing
-      - name: Test Container Run
-        run: |
-          # Create a dummy log file for the test
-          echo "192.168.1.1 - - [10/Oct/2023] \"GET / HTTP/1.1\" 200 100" > test.log
-          # Run the container against the dummy log
-          docker run -v $(pwd)/test.log:/app/server.log my-log-analyzer:${{ github.sha }}
+      - name: Say Hello
+        run: echo "Hello! I am a robot!"
