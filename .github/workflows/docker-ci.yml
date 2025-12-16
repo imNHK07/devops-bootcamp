@@ -1,12 +1,19 @@
-name: My First Robot
+name: Docker Builder Robot
 
 on:
   push:
     branches: [ "master" ]
 
 jobs:
-  hello:
+  build-docker:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Say Hello
-        run: echo "Hi! I am a robot!"
+      - name: Step 1 - Download code
+        uses: actions/checkout@v4
+
+      - name: Step 2 - Build Docker image
+        run: docker build -t my-log-analyzer:v1 .
+
+      - name: Step 3 - Test it
+        run: echo "Build successful!"
