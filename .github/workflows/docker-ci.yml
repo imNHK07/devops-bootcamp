@@ -4,9 +4,9 @@ name: Docker Build CI
 # We want it on every push to the 'main' branch.
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "master" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "master" ]
 
 # Jobs: The actual work to be done.
 jobs:
