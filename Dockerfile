@@ -9,6 +9,7 @@ WORKDIR /app
 # 3. Copy our script from the host (your PC) to the container.
 # Format: COPY [source] [destination]
 
+COPY server.log .
 COPY log_analyzer.py .
 
 # 4. (Optional) If we had external libraries, we would install them here.
